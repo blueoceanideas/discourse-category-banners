@@ -1,4 +1,4 @@
-<script type="text/discourse-plugin" version="0.8">
+<script type="text/discourse-plugin" type="text/javascript" version="0.8">
   const container = Discourse.__container__;    
   const { h } = require('virtual-dom');
  
@@ -29,6 +29,16 @@
               }
             }
 
+            function catImage () {
+                if( category.uploaded_logo ) {
+                    return h('img.category-logo', {
+                        "attributes": {
+                            "src" : "category.uploaded_logo.url"
+                        }
+                    });
+                }
+            }
+
             function ifProtected() {
                 if(category.read_restricted) {
                     return h('i.fa.fa-lock');                    
@@ -41,8 +51,13 @@
                 }
               }, h('div.category-title-contents', [
                       ifProtected(),
-                      h('h1', category.name),   
-                      h('div.category-title-description',catDesc())
+                      h('div.category-title-image', [
+                          catImage()
+                      ]),
+                      h('category-title-content', [
+                          h('h1', category.name),
+                          h('div.category-title-description',catDesc()),
+                      ]),
                   ]),
                   
               );
