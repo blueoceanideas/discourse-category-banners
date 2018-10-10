@@ -29,13 +29,25 @@
               }
             }
 
-            function catImage () {
+            function catImageExists () {
                 if( category.uploaded_logo ) {
+                    return true;
+                }
+            }
+
+            function catImage () {
+                if( catImageExists ) {
                     return h('img.category-logo', {
                         "attributes": {
                             "src" : category.uploaded_logo.url
                         }
                     });
+                }
+            }
+
+            function catName() {
+                if( catImageExists() ) {
+                    return h('h1', category.name);
                 }
             }
 
@@ -55,7 +67,7 @@
                           catImage()
                       ]),
                       h('category-title-content', [
-                          h('h1', category.name),
+                          h('div', catName()),
                           h('div.category-title-description',catDesc()),
                       ]),
                   ]),
