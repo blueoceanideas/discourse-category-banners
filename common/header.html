@@ -46,8 +46,8 @@
             }
 
             function catName() {
-                if( catImageExists() ) {
-                    return h('h1', category.name);
+                if( !catImageExists() ) {
+                    return h('h1.category-name', category.name);
                 }
             }
 
