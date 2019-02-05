@@ -1,12 +1,12 @@
-show-description:
+show_description:
   default: true
   description: 'Show description from "About This Category" post'
 
-show-mobile:
+show_mobile:
   default: true
   description: 'Show banners on mobile'
 
-show-subcategory:
+show_subcategory:
   default: true
   description: 'Show banners for subcategories'
 
